@@ -22,7 +22,8 @@ object BuildSettings extends Build {
   lazy val junctions  = project.dependsOn(chisel, cde)
   lazy val uncore     = project.dependsOn(junctions)
   lazy val rocket     = project.dependsOn(hardfloat, uncore)
-  lazy val groundtest = project.dependsOn(rocket)
+  lazy val dma        = project.dependsOn(rocket)
+  lazy val groundtest = project.dependsOn(dma)
   lazy val coreplex   = project.dependsOn(groundtest)
   lazy val rocketchip = (project in file(".")).settings(chipSettings).dependsOn(coreplex)
 
